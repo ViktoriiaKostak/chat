@@ -1,0 +1,20 @@
+service: message-processor
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+
+functions:
+  messageProcessor:
+    handler: message-processor/index.handler
+    name: ${self:service}-${self:provider.stage}
+    description: Process chat messages with content sanitization
+    timeout: 30
+    memorySize: 128
+    events:
+      - http:
+          path: process-message
+          method: post
+          cors: true

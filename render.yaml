@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: chat-app
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: node dist/src/main.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_HOST
+        value: localhost
+      - key: DB_PORT
+        value: 3306
+      - key: DB_USERNAME
+        value: root
+      - key: DB_PASSWORD
+        value: password
+      - key: DB_DATABASE
+        value: chat_app
+
+  - type: pserv
+    name: chat-mysql
+    env: docker
+    dockerfilePath: ./docker/mysql/Dockerfile
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        value: password
+      - key: MYSQL_DATABASE
+        value: chat_app
+      - key: MYSQL_USER
+        value: chat_user
+      - key: MYSQL_PASSWORD
+        value: chat_password 
