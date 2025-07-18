@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chat_app_local
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=host.docker.internal
+      - DB_PORT=3306
+      - DB_USERNAME=chat_user
+      - DB_PASSWORD=chat_password
+      - DB_DATABASE=chat_app
+      - AWS_REGION=${AWS_REGION}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_LAMBDA_FUNCTION_NAME=${AWS_LAMBDA_FUNCTION_NAME}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - chat_network
+
+networks:
+  chat_network:
+    driver: bridge 

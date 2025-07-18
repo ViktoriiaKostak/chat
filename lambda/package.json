@@ -1,0 +1,13 @@
+{
+  "name": "message-processor-lambda",
+  "version": "1.0.0",
+  "description": "AWS Lambda function for processing chat messages",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "zip -r function.zip . && aws lambda update-function-code --function-name message-processor --zip-file fileb://function.zip"
+  },
+  "dependencies": {},
+  "keywords": ["aws", "lambda", "chat", "message-processing"],
+  "author": "Viktoriia Kostak",
+  "license": "MIT"
+} 
