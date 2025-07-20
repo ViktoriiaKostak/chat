@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ChatModule } from './chat/chat.module';
+import { HealthModule } from './health/health.module';
 import { DatabaseConfig } from './config/database.config';
 import { AppController } from './app.controller';
 import { validationSchema } from './config/env.validation';
@@ -18,6 +19,7 @@ import { databaseConfig, awsConfig, appConfig } from './config/env.config';
       useClass: DatabaseConfig,
     }),
     ChatModule,
+    HealthModule,
   ],
   controllers: [AppController],
 })

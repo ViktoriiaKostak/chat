@@ -19,6 +19,9 @@ export class DatabaseConfig implements TypeOrmOptionsFactory {
       migrationsRun: true,
       synchronize: this.configService.get('NODE_ENV') === 'development',
       logging: this.configService.get('NODE_ENV') === 'development',
+      retryAttempts: 3,
+      retryDelay: 3000,
+      keepConnectionAlive: true,
     };
   }
 }

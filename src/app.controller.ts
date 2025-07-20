@@ -6,8 +6,6 @@ import { join } from 'path';
 export class AppController {
   @Get()
   serveFrontend(@Res() res: Response) {
-    res.sendFile(join(__dirname, '..', '..', 'public', 'index.html'));
+    res.sendFile(join(process.cwd(), 'public', 'index.html'));
   }
-
-
 }
