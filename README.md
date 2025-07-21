@@ -2,6 +2,10 @@
 
 A real-time chat application built with NestJS, MySQL, AWS Lambda, and WebSockets.
 
+## Live Demo
+
+The application is deployed on Heroku: https://real-time-chat-7b1c7c8d27f1.herokuapp.com/
+
 ## Features
 
 - Real-time messaging using WebSockets with Socket.IO
@@ -10,7 +14,7 @@ A real-time chat application built with NestJS, MySQL, AWS Lambda, and WebSocket
 - REST API for message history with pagination
 - Simple HTML frontend for testing
 
-## Quick Start
+## Local Setup
 
 ### Prerequisites
 
@@ -64,6 +68,8 @@ npm run migration:run
 npm run start:dev
 ```
 
+The application will be available at http://localhost:3000
+
 ## API Endpoints
 
 - `GET /` - Frontend application
@@ -87,16 +93,16 @@ The application includes AWS Lambda integration for message processing:
 3. Update environment variables with AWS credentials
 4. Test integration
 
-## Deployment
-
-For deployment on cloud platforms, see [DEPLOYMENT.md](./DEPLOYMENT.md)
-
 ## Testing
 
 ```bash
 npm run test
 npm run test:e2e
 ```
+
+## Deployment
+
+For deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## License
 
