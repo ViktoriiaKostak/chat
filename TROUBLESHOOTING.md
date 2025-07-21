@@ -1,10 +1,10 @@
-# Вирішення проблем деплою
+# Deployment Troubleshooting
 
-## Проблема: "npm run build" не завершується успішно
+## Problem: "npm run build" doesn't complete successfully
 
-### Рішення 1: Використання multi-stage Dockerfile
+### Solution 1: Using multi-stage Dockerfile
 
-Якщо основний Dockerfile не працює, використовуйте `Dockerfile.multi`:
+If the main Dockerfile doesn't work, use `Dockerfile.multi`:
 
 ```bash
 # В docker-compose.yml змініть:
@@ -12,36 +12,36 @@ dockerfile: Dockerfile.multi
 target: production
 ```
 
-### Рішення 2: Використання спрощеного Dockerfile
+### Solution 2: Using simplified Dockerfile
 
-Якщо є проблеми з NestJS CLI, використовуйте `Dockerfile.simple`:
+If there are issues with NestJS CLI, use `Dockerfile.simple`:
 
 ```bash
 # В docker-compose.yml змініть:
 dockerfile: Dockerfile.simple
 ```
 
-### Рішення 3: Локальна збірка
+### Solution 3: Local build
 
 ```bash
-# Збудуйте локально
+# Build locally
 npm install
 npm run build
 
-# Перевірте чи створився dist/src/main.js
+# Check if dist/src/main.js was created
 ls -la dist/src/
 ```
 
-## Проблема: Відсутні змінні середовища
+## Problem: Missing environment variables
 
-### Рішення:
+### Solution:
 
-1. **Створіть .env файл**:
+1. **Create .env file**:
 ```bash
 cp env.example .env
 ```
 
-2. **Налаштуйте змінні для хмарного провайдера**:
+2. **Configure variables for cloud provider**:
 ```env
 NODE_ENV=production
 PORT=3000
@@ -52,61 +52,61 @@ DATABASE_PASSWORD=your-mysql-password
 DATABASE_NAME=your-mysql-database
 ```
 
-## Проблема: База даних не підключається
+## Problem: Database doesn't connect
 
-### Рішення:
+### Solution:
 
-1. **Перевірте змінні середовища**
-2. **Переконайтеся, що база даних запущена**
-3. **Перевірте мережеві налаштування**
+1. **Check environment variables**
+2. **Make sure database is running**
+3. **Check network settings**
 
-## Проблема: Порт зайнятий
+## Problem: Port is occupied
 
-### Рішення:
+### Solution:
 
 ```bash
-# Перевірте що використовує порт 3000
+# Check what's using port 3000
 lsof -i :3000
 
-# Зупиніть процес або змініть порт в docker-compose.yml
+# Stop the process or change port in docker-compose.yml
 ```
 
-## Проблема: Docker не може збудувати образ
+## Problem: Docker can't build image
 
-### Рішення:
+### Solution:
 
 ```bash
-# Очистіть Docker кеш
+# Clear Docker cache
 docker system prune -a
 
-# Перебудуйте образ
+# Rebuild image
 docker compose build --no-cache
 
-# Або використовуйте спрощений Dockerfile
+# Or use simplified Dockerfile
 docker build -f Dockerfile.simple -t chat-app .
 ```
 
-## Проблема: AWS Lambda не працює
+## Problem: AWS Lambda doesn't work
 
-### Рішення:
+### Solution:
 
-AWS Lambda є опціональним. Додаток працюватиме без нього. Просто не налаштовуйте AWS змінні середовища.
+AWS Lambda is optional. The application will work without it. Just don't configure AWS environment variables.
 
-## Корисні команди для дебагу
+## Useful debug commands
 
 ```bash
-# Переглянути логи
+# View logs
 docker compose logs -f app
 
-# Переглянути логи бази даних
+# View database logs
 docker compose logs -f mysql
 
-# Зайти в контейнер
+# Enter container
 docker compose exec app sh
 
-# Перевірити змінні середовища в контейнері
+# Check environment variables in container
 docker compose exec app env
 
-# Перезапустити сервіси
+# Restart services
 docker compose restart
 ``` 

@@ -16,7 +16,7 @@ export function loadEnvConfig(): void {
     const result = config({ path: envPath });
 
     if (result.parsed) {
-      console.log(`📄 Loaded environment from: ${envFile}`);
+      console.log(`Loaded environment from: ${envFile}`);
       break;
     }
   }
