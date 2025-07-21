@@ -7,11 +7,11 @@ export const validationSchema = Joi.object({
 
   PORT: Joi.number().default(3000),
 
-  DB_HOST: Joi.string().default('localhost'),
-  DB_PORT: Joi.number().default(3306),
-  DB_USERNAME: Joi.string().default('root'),
-  DB_PASSWORD: Joi.string().default('password'),
-  DB_DATABASE: Joi.string().default('chat_app'),
+  DATABASE_HOST: Joi.string().default('localhost'),
+  DATABASE_PORT: Joi.number().default(3306),
+  DATABASE_USERNAME: Joi.string().default('root'),
+  DATABASE_PASSWORD: Joi.string().default('password'),
+  DATABASE_NAME: Joi.string().default('chat_app'),
 
   AWS_REGION: Joi.string().default('us-east-1'),
   AWS_ACCESS_KEY_ID: Joi.string().optional(),
