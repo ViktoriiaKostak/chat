@@ -345,6 +345,8 @@ ports:
 
 ## Deployment
 
+Для деплою на хмарні платформи дивіться [DEPLOYMENT.md](./DEPLOYMENT.md)
+
 ### Production with Docker
 
 ```bash
@@ -359,11 +361,11 @@ docker run -d -p 3000:3000 --env-file .env.prod chat-app:prod
 
 ```env
 NODE_ENV=production
-DB_HOST=your-db-host
-DB_PORT=3306
-DB_USERNAME=your-db-user
-DB_PASSWORD=your-db-password
-DB_DATABASE=chat_app
+DATABASE_HOST=your-db-host
+DATABASE_PORT=3306
+DATABASE_USERNAME=your-db-user
+DATABASE_PASSWORD=your-db-password
+DATABASE_NAME=chat_app
 ```
 
 ## Contributing

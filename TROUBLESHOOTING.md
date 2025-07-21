@@ -41,7 +41,7 @@ ls -la dist/src/
 cp env.example .env
 ```
 
-2. **Налаштуйте змінні для Railway**:
+2. **Налаштуйте змінні для хмарного провайдера**:
 ```env
 NODE_ENV=production
 PORT=3000
